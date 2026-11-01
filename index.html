@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>AP2 · 三维层级场景：太阳系</title>
+<style>
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #060a18;
+               font-family: "PingFang SC", "Microsoft YaHei", sans-serif; }
+  #gl-canvas { display: block; width: 100vw; height: 100vh; cursor: grab; }
+  #gl-canvas.dragging { cursor: grabbing; }
+  #panel {
+    position: absolute; top: 12px; left: 12px; width: 250px;
+    background: rgba(10, 16, 34, 0.82); color: #dbe4ff;
+    border: 1px solid #2c3d66; border-radius: 10px; padding: 12px 14px;
+    font-size: 13px; user-select: none; backdrop-filter: blur(4px);
+  }
+  #panel h3 { margin: 0 0 8px; font-size: 14px; color: #ffd76e; }
+  #panel label { display: block; margin: 7px 0; }
+  #panel input[type=range] { width: 100%; }
+  #panel .val { float: right; color: #8fd0ff; }
+  #status { margin-top: 9px; padding-top: 8px; border-top: 1px solid #2c3d66;
+            color: #9fe6a0; font-size: 12px; line-height: 1.7; }
+  .hint { color: #8494bd; font-size: 11px; line-height: 1.7; }
+</style>
+</head>
+<body>
+<canvas id="gl-canvas"></canvas>
+<div id="panel">
+  <h3>太阳系 · AP2</h3>
+  <label>公转速度 <span class="val" id="orbVal">1.0x</span>
+    <input type="range" id="orbSpeed" min="0" max="10" step="0.1" value="1"></label>
+  <label>自转速度 <span class="val" id="spinVal">1.0x</span>
+    <input type="range" id="spinSpeed" min="0" max="10" step="0.1" value="1"></label>
+  <label>地球轴倾角 <span class="val" id="tiltVal">23.5°</span>
+    <input type="range" id="tiltDeg" min="0" max="45" step="0.5" value="23.5"></label>
+  <label><input type="checkbox" id="showOrbits" checked> 显示轨道线</label>
+  <label><input type="checkbox" id="showBelt" checked> 显示小行星带（E1）</label>
+  <div id="status"></div>
+  <div class="hint">
+    按键：<b>O</b> 切换正交/透视投影 · <b>空格</b> 暂停/继续漫游<br>
+    鼠标：拖拽旋转视角（接管漫游）· 滚轮缩放
+  </div>
+</div>
+<script src="MV.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
